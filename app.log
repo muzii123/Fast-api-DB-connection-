@@ -1,0 +1,11 @@
+2026-06-03 23:08:37,216 - INFO - Remove item called for item_id: 13
+2026-06-03 23:09:01,103 - INFO - Remove item called for item_id: 1
+2026-06-03 23:10:27,919 - INFO - Add item API called: cart_id=10 product_id=10 quantity=1
+2026-06-03 23:11:54,928 - INFO - Create cart for user: 505
+2026-06-03 23:13:15,135 - INFO - Add item API called: cart_id=1009 product_id=18 quantity=5
+2026-06-04 00:36:34,688 - INFO - Add item API called: cart_id=10 product_id=10 quantity=10
+2026-06-04 00:38:28,118 - INFO - Remove item called for item_id: 12
+2026-06-04 00:39:24,889 - INFO - Remove item called for item_id: 11
+2026-06-04 00:40:16,153 - INFO - Add item API called: cart_id=100 product_id=100 quantity=100
+2026-06-04 01:00:47,974 - INFO - Request: Remove item_id=4
+2026-06-04 01:26:41,895 - INFO - Create cart for user: 500
