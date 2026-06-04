@@ -9,3 +9,4 @@
 2026-06-04 00:40:16,153 - INFO - Add item API called: cart_id=100 product_id=100 quantity=100
 2026-06-04 01:00:47,974 - INFO - Request: Remove item_id=4
 2026-06-04 01:26:41,895 - INFO - Create cart for user: 500
+2026-06-04 12:46:05,468 - INFO - Create cart for user: 11

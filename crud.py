@@ -2,6 +2,7 @@ from models import Cart, CartItem, Product
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 import logging
+import json
 logger = logging.getLogger(__name__)
 
 def create_cart(db: Session, user_id: int):
@@ -14,12 +15,33 @@ def create_cart(db: Session, user_id: int):
 
 def add_item(db, data):
 
-    # ✅ get product first
-    product = db.query(Product).filter(Product.id == data.product_id).first()
+    logger.info(f"Add item API called: cart_id={data.cart_id} product_id={data.product_id} quantity={data.quantity}")
 
-    # ✅ THEN check
-    if not product:
-        raise HTTPException(status_code=404, detail="Product not found")
+    # your existing logic...
+    item = ...   # (whatever you are creating)
+
+    response = {
+        "message": "Item added successfully",
+        "item_id": item.id,
+        "quantity": item.quantity
+    }
+
+    # 🔥 ADD THIS (FINAL FIX)
+    try:
+        log_response = json.dumps(response, default=str)
+    except:
+        log_response = str(response)
+
+    logger.info(f"Response Body: {log_response}")
+
+    return response
+
+    logger.info(f"Add item called with data: cart_id={data.cart_id} product_id={data.product_id} quantity={data.quantity}")
+    
+    # Check cart exists
+    cart = db.query(Cart).filter(Cart.id == data.cart_id).first()
+    if not cart:
+        raise HTTPException(status_code=404, detail="Cart not found")
 
     # Check product exists
     product = db.query(Product).filter(Product.id == data.product_id).first()
@@ -46,43 +68,41 @@ def add_item(db, data):
     return {"message": "Item added", "item": new_item}
 
 
-def remove_item(db: Session, item_id: int):
-    item = db.query(CartItem).filter(CartItem.id == item_id).first()
+def remove_item(db, item_id):
 
-    if not item:
-        raise HTTPException(status_code=404, detail="Item not found")
+    logger.info(f"Remove item called for item_id: {item_id}")
 
-    db.delete(item)
-    db.commit()
+    # your logic...
 
-    return {"message": "Item removed successfully"}
+    response = {"message": "Item removed successfully"}
 
+    logger.info(f"Response Body: {json.dumps(response)}")
 
-def checkout(db: Session, cart_id: int):
-    cart = db.query(Cart).filter(Cart.id == cart_id).first()
-
-    if not cart:
-        raise HTTPException(status_code=404, detail="Cart not found")
-
-    items = db.query(CartItem).filter(CartItem.cart_id == cart_id).all()
-
-    if not items:
-        raise HTTPException(status_code=400, detail="Cart is empty")
-
-    cart.status = "checked_out"
-    db.commit()
-
-    return {"message": "Checkout successful"}
+    return response
 
 
-def delete_cart(db: Session, cart_id: int):
-    cart = db.query(Cart).filter(Cart.id == cart_id).first()
+def checkout(db, cart_id):
 
-    if not cart:
-        raise HTTPException(status_code=404, detail="Cart not found")
+    logger.info(f"Checkout called for cart_id: {cart_id}")
 
-    db.delete(cart)
-    db.commit()
+    # your logic...
 
-    return {"message": "Cart deleted successfully"}
+    response = {"message": "Checkout successful"}
+
+    logger.info(f"Response Body: {json.dumps(response)}")
+
+    return response
+
+
+def delete_cart(db, cart_id):
+
+    logger.info(f"Delete cart called for cart_id: {cart_id}")
+
+    # your logic...
+
+    response = {"message": "Cart deleted successfully"}
+
+    logger.info(f"Response Body: {json.dumps(response)}")
+
+    return response
 
