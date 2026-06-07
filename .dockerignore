@@ -1,0 +1,15 @@
+__pycache__
+*.pyc
+*.pyo
+*.db
+.git
+.gitignore
+venv/
+fast-api/
+.env
+*.log
+app.log
+test.db
+cart.db
+.vscode/
+.idea/

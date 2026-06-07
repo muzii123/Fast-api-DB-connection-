@@ -10,3 +10,416 @@
 2026-06-04 01:00:47,974 - INFO - Request: Remove item_id=4
 2026-06-04 01:26:41,895 - INFO - Create cart for user: 500
 2026-06-04 12:46:05,468 - INFO - Create cart for user: 11
+2026-06-04 22:49:43,045 - INFO - Create cart for user: 1
+2026-06-04 22:49:43,082 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:49:43,270 - INFO - Create cart for user: 1
+2026-06-04 22:49:43,301 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:49:43,705 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 422 Unprocessable Entity"
+2026-06-04 22:49:43,890 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 422 Unprocessable Entity"
+2026-06-04 22:49:44,538 - INFO - Create cart for user: 1
+2026-06-04 22:49:44,560 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:49:44,585 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:49:44,592 - INFO - Request: product_id=1, cart_id=1
+2026-06-04 22:49:44,592 - INFO - Add item API called: cart_id=1 product_id=1 quantity=2
+2026-06-04 22:49:44,594 - ERROR - Error occurred: 'ellipsis' object has no attribute 'id'
+2026-06-04 22:49:49,271 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:49:49,277 - INFO - Request: product_id=1, cart_id=9999
+2026-06-04 22:49:49,278 - INFO - Add item API called: cart_id=9999 product_id=1 quantity=1
+2026-06-04 22:49:49,279 - ERROR - Error occurred: 'ellipsis' object has no attribute 'id'
+2026-06-04 22:49:52,241 - INFO - Create cart for user: 1
+2026-06-04 22:49:52,275 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:49:52,295 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:49:52,303 - INFO - HTTP Request: POST http://testserver/cart/add "HTTP/1.1 422 Unprocessable Entity"
+2026-06-04 22:49:52,748 - INFO - Create cart for user: 1
+2026-06-04 22:49:52,764 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:49:52,786 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:49:52,794 - INFO - HTTP Request: POST http://testserver/cart/add "HTTP/1.1 422 Unprocessable Entity"
+2026-06-04 22:49:52,988 - INFO - Create cart for user: 1
+2026-06-04 22:49:53,081 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:49:53,107 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:49:53,117 - INFO - HTTP Request: POST http://testserver/cart/add "HTTP/1.1 422 Unprocessable Entity"
+2026-06-04 22:49:53,592 - INFO - Create cart for user: 1
+2026-06-04 22:49:53,656 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:49:53,663 - INFO - Request: product_id=9999, cart_id=1
+2026-06-04 22:49:53,663 - INFO - Add item API called: cart_id=1 product_id=9999 quantity=1
+2026-06-04 22:49:53,665 - ERROR - Error occurred: 'ellipsis' object has no attribute 'id'
+2026-06-04 22:49:56,535 - INFO - Create cart for user: 1
+2026-06-04 22:49:56,572 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:49:56,590 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:49:56,596 - INFO - Request: product_id=1, cart_id=1
+2026-06-04 22:49:56,596 - INFO - Add item API called: cart_id=1 product_id=1 quantity=1
+2026-06-04 22:49:56,598 - ERROR - Error occurred: 'ellipsis' object has no attribute 'id'
+2026-06-04 22:49:58,764 - INFO - Request: remove item_id=99999
+2026-06-04 22:49:58,764 - INFO - Remove item called for item_id: 99999
+2026-06-04 22:49:58,764 - INFO - Response Body: {"message": "Item removed successfully"}
+2026-06-04 22:49:58,764 - INFO - Response Body: {"message": "Item removed successfully"}
+2026-06-04 22:49:58,766 - INFO - HTTP Request: DELETE http://testserver/cart/remove/99999 "HTTP/1.1 200 OK"
+2026-06-04 22:49:58,904 - INFO - Create cart for user: 1
+2026-06-04 22:49:58,919 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:49:58,939 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:49:58,946 - INFO - Request: product_id=1, cart_id=1
+2026-06-04 22:49:58,946 - INFO - Add item API called: cart_id=1 product_id=1 quantity=1
+2026-06-04 22:49:58,948 - ERROR - Error occurred: 'ellipsis' object has no attribute 'id'
+2026-06-04 22:49:59,890 - INFO - HTTP Request: DELETE http://testserver/cart/remove/abc "HTTP/1.1 422 Unprocessable Entity"
+2026-06-04 22:50:00,002 - INFO - Create cart for user: 1
+2026-06-04 22:50:00,016 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:00,035 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:50:00,041 - INFO - Request: product_id=1, cart_id=1
+2026-06-04 22:50:00,041 - INFO - Add item API called: cart_id=1 product_id=1 quantity=1
+2026-06-04 22:50:00,042 - ERROR - Error occurred: 'ellipsis' object has no attribute 'id'
+2026-06-04 22:50:01,190 - INFO - Create cart for user: 1
+2026-06-04 22:50:01,205 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:01,212 - INFO - Request: checkout cart_id=1
+2026-06-04 22:50:01,212 - INFO - Checkout called for cart_id: 1
+2026-06-04 22:50:01,213 - INFO - Response Body: {"message": "Checkout successful"}
+2026-06-04 22:50:01,213 - INFO - Response Body: {"message": "Checkout successful"}
+2026-06-04 22:50:01,216 - INFO - HTTP Request: POST http://testserver/cart/checkout?cart_id=1 "HTTP/1.1 200 OK"
+2026-06-04 22:50:01,833 - INFO - Request: checkout cart_id=99999
+2026-06-04 22:50:01,834 - INFO - Checkout called for cart_id: 99999
+2026-06-04 22:50:01,848 - INFO - Response Body: {"message": "Checkout successful"}
+2026-06-04 22:50:01,849 - INFO - Response Body: {"message": "Checkout successful"}
+2026-06-04 22:50:01,851 - INFO - HTTP Request: POST http://testserver/cart/checkout?cart_id=99999 "HTTP/1.1 200 OK"
+2026-06-04 22:50:02,126 - INFO - HTTP Request: POST http://testserver/cart/checkout "HTTP/1.1 422 Unprocessable Entity"
+2026-06-04 22:50:02,243 - INFO - Create cart for user: 1
+2026-06-04 22:50:02,265 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:02,283 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:50:02,289 - INFO - Request: product_id=1, cart_id=1
+2026-06-04 22:50:02,290 - INFO - Add item API called: cart_id=1 product_id=1 quantity=1
+2026-06-04 22:50:02,291 - ERROR - Error occurred: 'ellipsis' object has no attribute 'id'
+2026-06-04 22:50:03,334 - INFO - HTTP Request: POST http://testserver/cart/checkout?cart_id=abc "HTTP/1.1 422 Unprocessable Entity"
+2026-06-04 22:50:03,439 - INFO - Create cart for user: 1
+2026-06-04 22:50:03,452 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:03,458 - INFO - Request: delete cart_id=1
+2026-06-04 22:50:03,458 - INFO - Delete cart called for cart_id: 1
+2026-06-04 22:50:03,458 - INFO - Response Body: {"message": "Cart deleted successfully"}
+2026-06-04 22:50:03,458 - INFO - Response Body: {"message": "Cart deleted successfully"}
+2026-06-04 22:50:03,460 - INFO - HTTP Request: DELETE http://testserver/cart/1 "HTTP/1.1 200 OK"
+2026-06-04 22:50:03,559 - INFO - Create cart for user: 1
+2026-06-04 22:50:03,574 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:03,594 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:50:03,600 - INFO - Request: product_id=1, cart_id=1
+2026-06-04 22:50:03,601 - INFO - Add item API called: cart_id=1 product_id=1 quantity=2
+2026-06-04 22:50:03,602 - ERROR - Error occurred: 'ellipsis' object has no attribute 'id'
+2026-06-04 22:50:04,538 - INFO - Request: delete cart_id=99999
+2026-06-04 22:50:04,538 - INFO - Delete cart called for cart_id: 99999
+2026-06-04 22:50:04,538 - INFO - Response Body: {"message": "Cart deleted successfully"}
+2026-06-04 22:50:04,539 - INFO - Response Body: {"message": "Cart deleted successfully"}
+2026-06-04 22:50:04,541 - INFO - HTTP Request: DELETE http://testserver/cart/99999 "HTTP/1.1 200 OK"
+2026-06-04 22:50:04,653 - INFO - Create cart for user: 1
+2026-06-04 22:50:04,667 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:04,671 - INFO - Request: delete cart_id=1
+2026-06-04 22:50:04,671 - INFO - Delete cart called for cart_id: 1
+2026-06-04 22:50:04,671 - INFO - Response Body: {"message": "Cart deleted successfully"}
+2026-06-04 22:50:04,671 - INFO - Response Body: {"message": "Cart deleted successfully"}
+2026-06-04 22:50:04,673 - INFO - HTTP Request: DELETE http://testserver/cart/1 "HTTP/1.1 200 OK"
+2026-06-04 22:50:04,675 - INFO - Request: delete cart_id=1
+2026-06-04 22:50:04,676 - INFO - Delete cart called for cart_id: 1
+2026-06-04 22:50:04,676 - INFO - Response Body: {"message": "Cart deleted successfully"}
+2026-06-04 22:50:04,676 - INFO - Response Body: {"message": "Cart deleted successfully"}
+2026-06-04 22:50:04,678 - INFO - HTTP Request: DELETE http://testserver/cart/1 "HTTP/1.1 200 OK"
+2026-06-04 22:50:04,889 - INFO - HTTP Request: DELETE http://testserver/cart/abc "HTTP/1.1 422 Unprocessable Entity"
+2026-06-04 22:50:05,106 - INFO - HTTP Request: POST http://testserver/product?price=500 "HTTP/1.1 200 OK"
+2026-06-04 22:50:05,416 - INFO - HTTP Request: POST http://testserver/product?price=1000&discount=100 "HTTP/1.1 200 OK"
+2026-06-04 22:50:05,595 - INFO - HTTP Request: POST http://testserver/product?price=200 "HTTP/1.1 200 OK"
+2026-06-04 22:50:05,787 - INFO - HTTP Request: POST http://testserver/product?price=300 "HTTP/1.1 200 OK"
+2026-06-04 22:50:05,915 - INFO - HTTP Request: POST http://testserver/product "HTTP/1.1 422 Unprocessable Entity"
+2026-06-04 22:50:06,053 - INFO - HTTP Request: POST http://testserver/product?price=-50 "HTTP/1.1 200 OK"
+2026-06-04 22:50:06,252 - INFO - HTTP Request: POST http://testserver/product?price=abc "HTTP/1.1 422 Unprocessable Entity"
+2026-06-04 22:50:06,417 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=-10 "HTTP/1.1 200 OK"
+2026-06-04 22:50:06,631 - INFO - HTTP Request: POST http://testserver/product?price=50&discount=100 "HTTP/1.1 200 OK"
+2026-06-04 22:50:06,827 - INFO - HTTP Request: GET http://testserver/products "HTTP/1.1 200 OK"
+2026-06-04 22:50:06,948 - INFO - HTTP Request: POST http://testserver/product?price=100 "HTTP/1.1 200 OK"
+2026-06-04 22:50:06,955 - INFO - HTTP Request: GET http://testserver/products "HTTP/1.1 200 OK"
+2026-06-04 22:50:07,064 - INFO - HTTP Request: GET http://testserver/products "HTTP/1.1 200 OK"
+2026-06-04 22:50:07,262 - INFO - HTTP Request: POST http://testserver/product?price=100 "HTTP/1.1 200 OK"
+2026-06-04 22:50:07,285 - INFO - HTTP Request: POST http://testserver/product?price=200 "HTTP/1.1 200 OK"
+2026-06-04 22:50:07,302 - INFO - HTTP Request: POST http://testserver/product?price=300 "HTTP/1.1 200 OK"
+2026-06-04 22:50:07,311 - INFO - HTTP Request: GET http://testserver/products "HTTP/1.1 200 OK"
+2026-06-04 22:50:07,518 - INFO - HTTP Request: POST http://testserver/products "HTTP/1.1 405 Method Not Allowed"
+2026-06-04 22:50:07,867 - INFO - HTTP Request: POST http://testserver/product?price=500 "HTTP/1.1 200 OK"
+2026-06-04 22:50:07,874 - INFO - HTTP Request: GET http://testserver/products "HTTP/1.1 200 OK"
+2026-06-04 22:50:08,134 - INFO - HTTP Request: POST http://testserver/product?price=200 "HTTP/1.1 200 OK"
+2026-06-04 22:50:08,139 - INFO - Create cart for user: 1
+2026-06-04 22:50:08,153 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:08,157 - INFO - Request: product_id=1, cart_id=1
+2026-06-04 22:50:08,157 - INFO - Add item API called: cart_id=1 product_id=1 quantity=1
+2026-06-04 22:50:08,159 - ERROR - Error occurred: 'ellipsis' object has no attribute 'id'
+2026-06-04 22:50:09,318 - INFO - Create cart for user: 1
+2026-06-04 22:50:09,331 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:09,347 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:50:09,350 - INFO - Request: delete cart_id=1
+2026-06-04 22:50:09,351 - INFO - Delete cart called for cart_id: 1
+2026-06-04 22:50:09,351 - INFO - Response Body: {"message": "Cart deleted successfully"}
+2026-06-04 22:50:09,351 - INFO - Response Body: {"message": "Cart deleted successfully"}
+2026-06-04 22:50:09,352 - INFO - HTTP Request: DELETE http://testserver/cart/1 "HTTP/1.1 200 OK"
+2026-06-04 22:50:09,355 - INFO - Request: checkout cart_id=1
+2026-06-04 22:50:09,355 - INFO - Checkout called for cart_id: 1
+2026-06-04 22:50:09,355 - INFO - Response Body: {"message": "Checkout successful"}
+2026-06-04 22:50:09,356 - INFO - Response Body: {"message": "Checkout successful"}
+2026-06-04 22:50:09,357 - INFO - HTTP Request: POST http://testserver/cart/checkout?cart_id=1 "HTTP/1.1 200 OK"
+2026-06-04 22:50:09,485 - INFO - Create cart for user: 1
+2026-06-04 22:50:09,499 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:09,516 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:50:09,522 - INFO - Request: product_id=1, cart_id=1
+2026-06-04 22:50:09,523 - INFO - Add item API called: cart_id=1 product_id=1 quantity=1
+2026-06-04 22:50:09,524 - ERROR - Error occurred: 'ellipsis' object has no attribute 'id'
+2026-06-04 22:50:10,390 - INFO - Create cart for user: 1
+2026-06-04 22:50:10,413 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:10,433 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:50:10,439 - INFO - Request: product_id=1, cart_id=1
+2026-06-04 22:50:10,439 - INFO - Add item API called: cart_id=1 product_id=1 quantity=10000
+2026-06-04 22:50:10,441 - ERROR - Error occurred: 'ellipsis' object has no attribute 'id'
+2026-06-04 22:50:11,365 - INFO - Create cart for user: 1
+2026-06-04 22:50:11,378 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:11,394 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:50:11,398 - INFO - Request: product_id=1, cart_id=1
+2026-06-04 22:50:11,399 - INFO - Add item API called: cart_id=1 product_id=1 quantity=1
+2026-06-04 22:50:11,400 - ERROR - Error occurred: 'ellipsis' object has no attribute 'id'
+2026-06-04 22:50:12,294 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:50:12,302 - INFO - Create cart for user: 1
+2026-06-04 22:50:12,318 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:12,322 - INFO - Create cart for user: 1
+2026-06-04 22:50:12,336 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:12,628 - INFO - Create cart for user: 1
+2026-06-04 22:50:12,665 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:12,684 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:50:12,689 - INFO - Request: product_id=1, cart_id=1
+2026-06-04 22:50:12,690 - INFO - Add item API called: cart_id=1 product_id=1 quantity=2
+2026-06-04 22:50:12,692 - ERROR - Error occurred: 'ellipsis' object has no attribute 'id'
+2026-06-04 22:50:14,232 - INFO - Create cart for user: 1
+2026-06-04 22:50:14,248 - INFO - HTTP Request: POST http://testserver/cart "HTTP/1.1 200 OK"
+2026-06-04 22:50:14,266 - INFO - HTTP Request: POST http://testserver/product?price=100&discount=10 "HTTP/1.1 200 OK"
+2026-06-04 22:50:14,272 - INFO - HTTP Request: POST http://testserver/cart/add "HTTP/1.1 422 Unprocessable Entity"
+2026-06-04 22:50:14,403 - INFO - HTTP Request: POST http://testserver/product?price=750 "HTTP/1.1 200 OK"
+2026-06-04 22:50:14,410 - INFO - HTTP Request: GET http://testserver/products "HTTP/1.1 200 OK"
+2026-06-04 22:50:14,526 - INFO - HTTP Request: GET http://testserver/this-route-does-not-exist "HTTP/1.1 404 Not Found"
+2026-06-04 23:28:19,888 - INFO - Request: Create cart for user_id=1000
+2026-06-04 23:28:19,974 - INFO - Cart created successfully for user_id: 1000, cart_id: 15
+2026-06-04 23:28:19,978 - INFO - Response Body: {"user_id": 1000, "id": 15}
+2026-06-04 23:29:53,396 - INFO - Request: create product price=8000, discount=0
+2026-06-04 23:29:53,481 - INFO - Response Body: {"id": 7, "price": 8000, "discount": 0}
+2026-06-04 23:39:10,912 - WARNING - Error: Bad Request: 16: JSON decode error
+2026-06-04 23:39:45,801 - INFO - Success: Cart created successfully
+2026-06-04 23:39:45,805 - INFO - Success: Cart created successfully
+2026-06-04 23:40:11,948 - INFO - Success: Cart created successfully
+2026-06-04 23:40:12,003 - INFO - Success: Cart created successfully
+2026-06-04 23:42:36,240 - INFO - Success: Product created successfully
+2026-06-04 23:52:19,128 - INFO - Request: remove item_id=4
+2026-06-04 23:52:19,159 - WARNING - Error: Item not found
+2026-06-04 23:52:42,399 - INFO - Request: remove item_id=14
+2026-06-04 23:52:42,406 - WARNING - Error: Item not found
+2026-06-04 23:54:33,743 - INFO - Request: create product price=-1000, discount=0
+2026-06-04 23:54:33,835 - INFO - Success: Product created successfully
+2026-06-05 00:05:18,688 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 00:05:49,594 - INFO - Request: get all products
+2026-06-05 00:05:49,608 - INFO - Success: Retrieved 9 products
+2026-06-05 00:08:01,458 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 00:08:18,538 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 00:08:59,871 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 00:10:12,415 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 00:10:40,464 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 00:10:49,642 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 00:10:58,848 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 00:11:36,009 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 00:12:33,272 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 00:13:39,759 - INFO - Request: product_id=14, cart_id=10, quantity=1
+2026-06-05 00:13:39,822 - WARNING - Error: Product not found
+2026-06-05 00:14:51,971 - INFO - Request: product_id=1, cart_id=10, quantity=1
+2026-06-05 00:14:52,017 - INFO - Success: Item added successfully
+2026-06-05 00:16:13,807 - INFO - Request: get all products
+2026-06-05 00:16:13,948 - INFO - Success: Retrieved 9 products
+2026-06-05 00:18:02,617 - INFO - Request: Create cart for user_id=100
+2026-06-05 00:18:02,668 - INFO - Success: Cart created successfully
+2026-06-05 00:18:19,081 - INFO - Request: Create cart for user_id=100
+2026-06-05 00:18:19,182 - INFO - Success: Cart created successfully
+2026-06-05 00:19:12,395 - INFO - Request: product_id=1, cart_id=100, quantity=1
+2026-06-05 00:19:12,402 - WARNING - Error: Cart not found
+2026-06-05 00:19:21,473 - INFO - Request: product_id=100, cart_id=100, quantity=1
+2026-06-05 00:19:21,475 - WARNING - Error: Cart not found
+2026-06-05 00:19:32,855 - INFO - Request: product_id=100, cart_id=1, quantity=1
+2026-06-05 00:19:32,860 - WARNING - Error: Product not found
+2026-06-05 00:20:34,322 - INFO - Request: remove item_id=11
+2026-06-05 00:20:34,326 - WARNING - Error: Item not found
+2026-06-05 00:20:39,795 - INFO - Request: remove item_id=1
+2026-06-05 00:20:39,797 - WARNING - Error: Item not found
+2026-06-05 01:18:06,556 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 01:19:36,400 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 01:20:01,854 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 01:21:04,955 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 01:22:40,043 - INFO - Request: Create cart for user_id=1
+2026-06-05 01:22:40,226 - INFO - Success: Cart created successfully
+2026-06-05 01:22:51,929 - INFO - Request: Create cart for user_id=11
+2026-06-05 01:22:51,951 - INFO - Success: Cart created successfully
+2026-06-05 01:22:58,670 - INFO - Request: Create cart for user_id=111
+2026-06-05 01:22:58,708 - INFO - Success: Cart created successfully
+2026-06-05 01:23:54,794 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-05 01:23:54,913 - INFO - Success: Quantity updated successfully
+2026-06-05 01:24:29,304 - INFO - Request: get all products
+2026-06-05 01:24:29,308 - INFO - Success: Retrieved 9 products
+2026-06-05 01:25:33,132 - INFO - Request: get all products
+2026-06-05 01:25:33,136 - INFO - Success: Retrieved 9 products
+2026-06-05 01:28:27,533 - INFO - Request: get all products
+2026-06-05 01:28:27,539 - INFO - Success: Retrieved 9 products
+2026-06-05 01:29:48,198 - INFO - Request: get all products
+2026-06-05 01:29:48,225 - INFO - Success: Retrieved 9 products
+2026-06-05 15:48:03,519 - INFO - Request: get all products
+2026-06-05 15:48:03,542 - INFO - Success: Retrieved 9 products
+2026-06-05 15:48:15,644 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 15:48:32,383 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 15:50:39,441 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 15:54:03,244 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 15:57:01,351 - INFO - Request: Create cart for user_id=1
+2026-06-05 15:57:01,413 - INFO - Success: Cart created successfully
+2026-06-05 15:57:10,846 - INFO - Request: Create cart for user_id=122
+2026-06-05 15:57:10,875 - INFO - Success: Cart created successfully
+2026-06-05 16:01:38,117 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-05 16:01:38,261 - INFO - Success: Quantity updated successfully
+2026-06-05 16:01:47,934 - INFO - Request: product_id=12, cart_id=1, quantity=2
+2026-06-05 16:01:47,940 - WARNING - Error: Product not found
+2026-06-05 16:01:57,397 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-05 16:01:57,429 - INFO - Success: Quantity updated successfully
+2026-06-05 16:02:44,090 - INFO - Request: checkout cart_id=1
+2026-06-05 16:02:44,183 - INFO - Success: Checkout successful
+2026-06-05 16:02:53,601 - WARNING - Validation Error: Bad Request - cart_id: Field required
+2026-06-05 16:03:05,845 - INFO - Request: checkout cart_id=1
+2026-06-05 16:03:05,849 - WARNING - Error: Cart is empty
+2026-06-05 16:03:13,439 - INFO - Request: checkout cart_id=12
+2026-06-05 16:03:13,443 - WARNING - Error: Cart is empty
+2026-06-05 16:04:20,111 - INFO - Request: get all products
+2026-06-05 16:04:20,118 - INFO - Success: Retrieved 9 products
+2026-06-05 16:05:06,512 - INFO - Request: get all products
+2026-06-05 16:05:06,515 - INFO - Success: Retrieved 9 products
+2026-06-05 16:11:50,321 - INFO - Request: checkout cart_id=1
+2026-06-05 16:11:50,341 - WARNING - Error: Cart is empty
+2026-06-05 16:12:00,536 - INFO - Request: checkout cart_id=10
+2026-06-05 16:12:00,555 - INFO - Success: Checkout successful
+2026-06-05 16:12:12,127 - INFO - Request: checkout cart_id=10
+2026-06-05 16:12:12,131 - WARNING - Error: Cart is empty
+2026-06-05 16:12:20,526 - INFO - Request: checkout cart_id=10
+2026-06-05 16:12:20,530 - WARNING - Error: Cart is empty
+2026-06-05 16:12:31,183 - INFO - Request: checkout cart_id=11
+2026-06-05 16:12:31,186 - WARNING - Error: Cart is empty
+2026-06-05 16:12:42,544 - INFO - Request: checkout cart_id=1
+2026-06-05 16:12:42,550 - WARNING - Error: Cart is empty
+2026-06-05 16:12:48,055 - INFO - Request: checkout cart_id=10
+2026-06-05 16:12:48,059 - WARNING - Error: Cart is empty
+2026-06-05 16:12:52,977 - INFO - Request: checkout cart_id=102
+2026-06-05 16:12:52,980 - WARNING - Error: Cart not found
+2026-06-05 16:13:53,272 - INFO - Request: get all products
+2026-06-05 16:13:53,274 - INFO - Success: Retrieved 9 products
+2026-06-05 16:14:41,906 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 16:14:49,090 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 16:15:25,272 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 16:15:54,138 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 16:17:59,919 - INFO - Request: create product price=100, discount=50
+2026-06-05 16:17:59,959 - INFO - Success: Product created successfully
+2026-06-05 16:18:06,418 - WARNING - Validation Error: Bad Request - discount: Input should be less than or equal to 100
+2026-06-05 16:18:18,058 - INFO - Request: create product price=100, discount=100
+2026-06-05 16:18:18,098 - INFO - Success: Product created successfully
+2026-06-05 16:18:25,812 - INFO - Request: create product price=1000, discount=100
+2026-06-05 16:18:25,864 - INFO - Success: Product created successfully
+2026-06-05 16:26:10,250 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-05 16:26:10,438 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-05 16:26:10,629 - INFO - Success: Item added successfully
+2026-06-05 16:26:10,802 - INFO - Request: Create cart for user_id=122
+2026-06-05 16:26:11,003 - INFO - Success: Cart created successfully
+2026-06-05 16:26:11,197 - INFO - Request: checkout cart_id=10
+2026-06-05 16:26:11,258 - WARNING - Error: Cart is empty
+2026-06-05 16:26:11,438 - INFO - Request: get all products
+2026-06-05 16:26:11,455 - INFO - Success: Retrieved 12 products
+2026-06-05 16:28:28,684 - INFO - Request: create product price=100, discount=50
+2026-06-05 16:28:28,713 - INFO - Success: Product created successfully
+2026-06-05 16:28:47,310 - INFO - Request: checkout cart_id=10
+2026-06-05 16:28:47,314 - WARNING - Error: Cart is empty
+2026-06-05 16:29:05,151 - INFO - Request: checkout cart_id=1
+2026-06-05 16:29:05,181 - INFO - Success: Checkout successful
+2026-06-05 16:29:46,859 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-05 16:29:47,052 - INFO - Success: Item added successfully
+2026-06-05 16:29:47,311 - INFO - Request: Create cart for user_id=122
+2026-06-05 16:29:47,438 - INFO - Success: Cart created successfully
+2026-06-05 16:29:47,672 - INFO - Request: get all products
+2026-06-05 16:29:47,782 - INFO - Success: Retrieved 13 products
+2026-06-05 16:29:47,950 - INFO - Request: create product price=100, discount=50
+2026-06-05 16:29:48,155 - INFO - Success: Product created successfully
+2026-06-05 16:29:48,248 - INFO - Request: checkout cart_id=1
+2026-06-05 16:29:48,432 - INFO - Success: Checkout successful
+2026-06-05 16:30:41,160 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-05 16:30:41,207 - INFO - Success: Item added successfully
+2026-06-05 16:31:12,619 - INFO - Request: Create cart for user_id=12
+2026-06-05 16:31:12,658 - INFO - Success: Cart created successfully
+2026-06-05 16:35:11,606 - INFO - Request: product_id=12, cart_id=12, quantity=5
+2026-06-05 16:35:11,723 - INFO - Success: Item added successfully
+2026-06-05 16:35:37,171 - INFO - Request: checkout cart_id=11
+2026-06-05 16:35:37,177 - WARNING - Error: Cart is empty
+2026-06-05 16:35:43,829 - INFO - Request: checkout cart_id=12
+2026-06-05 16:35:43,866 - INFO - Success: Checkout successful
+2026-06-05 16:36:51,580 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-05 16:36:51,646 - INFO - Success: Quantity updated successfully
+2026-06-05 16:36:51,729 - INFO - Request: Create cart for user_id=122
+2026-06-05 16:36:51,791 - INFO - Success: Cart created successfully
+2026-06-05 16:36:51,946 - INFO - Request: get all products
+2026-06-05 16:36:51,948 - INFO - Success: Retrieved 14 products
+2026-06-05 16:36:52,014 - INFO - Request: create product price=100, discount=50
+2026-06-05 16:36:52,029 - INFO - Success: Product created successfully
+2026-06-05 16:36:52,115 - INFO - Request: checkout cart_id=1
+2026-06-05 16:36:52,132 - INFO - Success: Checkout successful
+2026-06-05 16:38:01,191 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-05 16:38:01,265 - INFO - Success: Item added successfully
+2026-06-05 16:38:01,346 - INFO - Request: Create cart for user_id=122
+2026-06-05 16:38:01,402 - INFO - Success: Cart created successfully
+2026-06-05 16:38:01,556 - INFO - Request: get all products
+2026-06-05 16:38:01,558 - INFO - Success: Retrieved 15 products
+2026-06-05 16:38:01,635 - INFO - Request: create product price=100, discount=50
+2026-06-05 16:38:01,653 - INFO - Success: Product created successfully
+2026-06-05 16:38:01,741 - INFO - Request: checkout cart_id=1
+2026-06-05 16:38:01,759 - INFO - Success: Checkout successful
+2026-06-05 16:38:36,793 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-05 16:38:36,917 - INFO - Success: Item added successfully
+2026-06-05 16:38:37,023 - INFO - Request: Create cart for user_id=122
+2026-06-05 16:38:37,050 - INFO - Success: Cart created successfully
+2026-06-05 16:38:37,212 - INFO - Request: get all products
+2026-06-05 16:38:37,217 - INFO - Success: Retrieved 16 products
+2026-06-05 16:38:37,316 - INFO - Request: create product price=100, discount=50
+2026-06-05 16:38:37,345 - INFO - Success: Product created successfully
+2026-06-05 16:38:37,425 - INFO - Request: checkout cart_id=1
+2026-06-05 16:38:37,441 - INFO - Success: Checkout successful
+2026-06-05 16:38:39,419 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-05 16:38:39,486 - INFO - Success: Item added successfully
+2026-06-05 16:38:39,578 - INFO - Request: Create cart for user_id=122
+2026-06-05 16:38:39,605 - INFO - Success: Cart created successfully
+2026-06-05 16:38:39,694 - INFO - Request: get all products
+2026-06-05 16:38:39,699 - INFO - Success: Retrieved 17 products
+2026-06-05 16:38:39,771 - INFO - Request: create product price=100, discount=50
+2026-06-05 16:38:39,799 - INFO - Success: Product created successfully
+2026-06-05 16:38:39,876 - INFO - Request: checkout cart_id=1
+2026-06-05 16:38:39,894 - INFO - Success: Checkout successful
+2026-06-05 16:38:41,592 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-05 16:38:41,628 - INFO - Success: Item added successfully
+2026-06-05 16:38:41,682 - INFO - Request: Create cart for user_id=122
+2026-06-05 16:38:41,720 - INFO - Success: Cart created successfully
+2026-06-05 16:38:41,804 - INFO - Request: get all products
+2026-06-05 16:38:41,830 - INFO - Success: Retrieved 18 products
+2026-06-05 16:38:41,934 - INFO - Request: create product price=100, discount=50
+2026-06-05 16:38:42,011 - INFO - Success: Product created successfully
+2026-06-05 16:38:42,150 - INFO - Request: checkout cart_id=1
+2026-06-05 16:38:42,188 - INFO - Success: Checkout successful
+2026-06-05 16:38:42,927 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-05 16:38:42,978 - INFO - Success: Item added successfully
+2026-06-05 16:38:43,069 - INFO - Request: Create cart for user_id=122
+2026-06-05 16:38:43,259 - INFO - Success: Cart created successfully
+2026-06-05 16:38:43,509 - INFO - Request: get all products
+2026-06-05 16:38:43,566 - INFO - Success: Retrieved 19 products
+2026-06-05 16:38:43,658 - INFO - Request: create product price=100, discount=50
+2026-06-05 16:38:43,680 - INFO - Success: Product created successfully
+2026-06-05 16:38:43,764 - INFO - Request: checkout cart_id=1
+2026-06-05 16:38:43,829 - INFO - Success: Checkout successful
+2026-06-05 16:38:44,626 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-05 16:38:44,777 - INFO - Success: Item added successfully
+2026-06-05 16:38:44,964 - INFO - Request: Create cart for user_id=122
+2026-06-05 16:38:45,070 - INFO - Success: Cart created successfully
+2026-06-05 16:38:45,172 - INFO - Request: get all products
+2026-06-05 16:38:45,198 - INFO - Success: Retrieved 20 products
+2026-06-05 16:38:45,466 - INFO - Request: create product price=100, discount=50
+2026-06-05 16:38:45,596 - INFO - Success: Product created successfully
+2026-06-05 16:38:45,694 - INFO - Request: checkout cart_id=1
+2026-06-05 16:38:45,777 - INFO - Success: Checkout successful
