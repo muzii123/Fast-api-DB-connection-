@@ -7,8 +7,14 @@ import models, schemas, crud
 from database import SessionLocal, engine
 import json
 from dotenv import load_dotenv
+from pydantic import BaseModel
 
 
+
+
+class ProductCreate(BaseModel):
+    price: float
+    discount: float = 0.0  
 
 load_dotenv()
 

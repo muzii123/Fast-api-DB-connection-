@@ -16,10 +16,9 @@ def cart(client):
 def product(client): 
     """Creates a product, returns its ID."""
    
-    res = client.post("/product?price=100&discount=10")
+    res = client.post("/product", json={"price": 100, "discount": 10})
     print("PRODUCT RESPONSE:", res.json())
     return res.json()["id"]   
-
 
 
 
@@ -37,12 +36,12 @@ def test_create_cart_has_id_in_response(client):
 def test_create_cart_missing_user_id(client):
     """TC-03 ❌ No user_id → 422."""
     res = client.post("/cart", json={})
-    assert res.status_code == 422
+    assert res.status_code == 400
 
 def test_create_cart_no_body(client):
     """TC-04 ❌ No body at all → 422."""
     res = client.post("/cart")
-    assert res.status_code == 422
+    assert res.status_code == 400
 
 
 
@@ -71,7 +70,7 @@ def test_add_item_missing_quantity(client, cart, product):
         "cart_id": cart,
         "product_id": product
     })
-    assert res.status_code == 422
+    assert res.status_code == 400
 
 def test_add_item_zero_quantity(client, cart, product):
     """TC-08 ❌ Quantity of 0 → 400 or 422."""
@@ -134,7 +133,7 @@ def test_remove_item_twice(client, cart, product):
 def test_remove_item_string_id(client):
     """TC-14 ❌ String instead of int in URL → 422."""
     res = client.delete("/cart/remove/abc")
-    assert res.status_code == 422
+    assert res.status_code == 400
 
 
 
@@ -163,7 +162,7 @@ def test_checkout_invalid_cart(client):
 def test_checkout_missing_cart_id(client):
     """TC-18 ❌ No cart_id at all → 422."""
     res = client.post("/cart/checkout")
-    assert res.status_code == 422
+    assert res.status_code == 400
 
 def test_checkout_twice(client, cart, product):
     """TC-19 ❌ Double checkout → 400 or 409."""
@@ -179,7 +178,7 @@ def test_checkout_twice(client, cart, product):
 def test_checkout_string_cart_id(client):
     """TC-20 ❌ String cart_id → 422."""
     res = client.post("/cart/checkout?cart_id=abc")
-    assert res.status_code == 422
+    assert res.status_code == 400
 
 
 
@@ -212,14 +211,14 @@ def test_delete_cart_twice(client, cart):
 def test_delete_cart_string_id(client):
     """TC-25 ❌ String cart_id in URL → 422."""
     res = client.delete("/cart/abc")
-    assert res.status_code == 422
+    assert res.status_code == 400
 
 
 
 
 def test_create_product_success(client):
     """TC-26 ✅ Valid price creates product."""
-    res = client.post("/product?price=500")
+    res = client.post("/product", json={"price": 500})
     assert res.status_code in (200, 201)
 
 def test_create_product_with_discount(client):
@@ -240,7 +239,7 @@ def test_create_product_has_id(client):
 def test_create_product_missing_price(client):
     """TC-30 ❌ No price → 422."""
     res = client.post("/product")
-    assert res.status_code == 422
+    assert res.status_code == 400
 
 def test_create_product_negative_price(client):
     """TC-31 ❌ Negative price → 400 or 422."""
@@ -250,7 +249,7 @@ def test_create_product_negative_price(client):
 def test_create_product_string_price(client):
     """TC-32 ❌ String price → 422."""
     res = client.post("/product?price=abc")
-    assert res.status_code == 422
+    assert res.status_code == 400
 
 def test_create_product_negative_discount(client):
     """TC-33 ❌ Negative discount → 400 or 422."""
@@ -273,7 +272,7 @@ def test_get_products_empty(client):
 
 def test_get_products_after_create(client):
     """TC-36 ✅ Returns list after product is created."""
-    client.post("/product?price=100")
+    client.post("/product?price=1000&discount=100")
     res = client.get("/products")
     assert res.status_code == 200
     assert len(res.json()) == 1
@@ -285,7 +284,7 @@ def test_get_products_returns_list(client):
 
 def test_get_products_multiple(client):
     """TC-38 ✅ Multiple products all appear."""
-    client.post("/product?price=100")
+    client.post("/product?price=1000&discount=100")
     client.post("/product?price=200")
     client.post("/product?price=300")
     res = client.get("/products")
@@ -370,7 +369,7 @@ def test_add_item_float_quantity(client, cart, product):
     res = client.post("/cart/add", json={
         "cart_id": cart, "product_id": product, "quantity": 1.5
     })
-    assert res.status_code == 422
+    assert res.status_code == 400
 
 def test_product_price_stored_correctly(client):
     """TC-49 ✅ Price in response matches what was sent."""

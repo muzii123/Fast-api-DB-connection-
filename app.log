@@ -423,3 +423,469 @@
 2026-06-05 16:38:45,596 - INFO - Success: Product created successfully
 2026-06-05 16:38:45,694 - INFO - Request: checkout cart_id=1
 2026-06-05 16:38:45,777 - INFO - Success: Checkout successful
+2026-06-08 23:04:43,580 - INFO - Request: create product price=100, discount=50
+2026-06-08 23:04:48,261 - INFO - Success: Product created successfully
+2026-06-08 23:05:48,489 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-08 23:05:48,512 - WARNING - Error: Cart not found
+2026-06-08 23:05:48,625 - INFO - Request: Create cart for user_id=122
+2026-06-08 23:05:48,644 - ERROR - Internal Server Error: (psycopg2.errors.ForeignKeyViolation) insert or update on table "carts" violates foreign key constraint "carts_user_id_fkey"
+DETAIL:  Key (user_id)=(122) is not present in table "users".
+
+[SQL: INSERT INTO carts (status, coupon, user_id) VALUES (%(status)s, %(coupon)s, %(user_id)s) RETURNING carts.id]
+[parameters: {'status': 'active', 'coupon': None, 'user_id': 122}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-06-09 00:12:12,225 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:12,292 - INFO - Success: Cart created successfully
+2026-06-09 00:12:12,466 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:12,493 - INFO - Success: Cart created successfully
+2026-06-09 00:12:12,698 - WARNING - Validation Error: Bad Request - user_id: Field required
+2026-06-09 00:12:13,604 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:13,725 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:13,739 - INFO - Success: Cart created successfully
+2026-06-09 00:12:13,750 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:13,884 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:13,994 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:14,013 - INFO - Success: Cart created successfully
+2026-06-09 00:12:14,025 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:14,173 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:14,186 - INFO - Success: Cart created successfully
+2026-06-09 00:12:14,195 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:14,347 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:14,368 - INFO - Success: Cart created successfully
+2026-06-09 00:12:14,377 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:14,661 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:14,690 - INFO - Success: Cart created successfully
+2026-06-09 00:12:14,747 - INFO - Request: product_id=9999, cart_id=1, quantity=1
+2026-06-09 00:12:14,760 - WARNING - Error: Product not found
+2026-06-09 00:12:15,107 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:15,126 - INFO - Success: Cart created successfully
+2026-06-09 00:12:15,134 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:15,357 - INFO - Request: remove item_id=99999
+2026-06-09 00:12:15,379 - WARNING - Error: Item not found
+2026-06-09 00:12:15,607 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:15,643 - INFO - Success: Cart created successfully
+2026-06-09 00:12:15,653 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:15,908 - WARNING - Validation Error: Bad Request - item_id: Input should be a valid integer, unable to parse string as an integer
+2026-06-09 00:12:16,295 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:16,316 - INFO - Success: Cart created successfully
+2026-06-09 00:12:16,324 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:16,479 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:16,495 - INFO - Success: Cart created successfully
+2026-06-09 00:12:16,503 - INFO - Request: checkout cart_id=1
+2026-06-09 00:12:16,508 - WARNING - Error: Cart is empty
+2026-06-09 00:12:16,638 - INFO - Request: checkout cart_id=99999
+2026-06-09 00:12:16,640 - WARNING - Error: Cart not found
+2026-06-09 00:12:16,764 - WARNING - Validation Error: Bad Request - cart_id: Field required
+2026-06-09 00:12:16,933 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:16,952 - INFO - Success: Cart created successfully
+2026-06-09 00:12:16,960 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:17,118 - WARNING - Validation Error: Bad Request - cart_id: Input should be a valid integer, unable to parse string as an integer
+2026-06-09 00:12:17,277 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:17,290 - INFO - Success: Cart created successfully
+2026-06-09 00:12:17,300 - INFO - Request: delete cart_id=1
+2026-06-09 00:12:17,320 - INFO - Success: Cart deleted successfully
+2026-06-09 00:12:17,584 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:17,598 - INFO - Success: Cart created successfully
+2026-06-09 00:12:17,606 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:17,775 - INFO - Request: delete cart_id=99999
+2026-06-09 00:12:17,777 - WARNING - Error: Cart not found
+2026-06-09 00:12:17,918 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:17,934 - INFO - Success: Cart created successfully
+2026-06-09 00:12:17,942 - INFO - Request: delete cart_id=1
+2026-06-09 00:12:17,956 - INFO - Success: Cart deleted successfully
+2026-06-09 00:12:17,962 - INFO - Request: delete cart_id=1
+2026-06-09 00:12:17,964 - WARNING - Error: Cart not found
+2026-06-09 00:12:18,090 - WARNING - Validation Error: Bad Request - cart_id: Input should be a valid integer, unable to parse string as an integer
+2026-06-09 00:12:18,258 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:18,441 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:18,692 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:18,889 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:19,184 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:19,333 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:19,449 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:19,587 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:19,747 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:19,869 - INFO - Request: get all products
+2026-06-09 00:12:19,873 - INFO - Success: Retrieved 0 products
+2026-06-09 00:12:19,998 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:20,002 - INFO - Request: get all products
+2026-06-09 00:12:20,006 - INFO - Success: Retrieved 0 products
+2026-06-09 00:12:20,145 - INFO - Request: get all products
+2026-06-09 00:12:20,147 - INFO - Success: Retrieved 0 products
+2026-06-09 00:12:20,355 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:20,361 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:20,372 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:20,377 - INFO - Request: get all products
+2026-06-09 00:12:20,379 - INFO - Success: Retrieved 0 products
+2026-06-09 00:12:20,694 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:20,699 - INFO - Request: get all products
+2026-06-09 00:12:20,706 - INFO - Success: Retrieved 0 products
+2026-06-09 00:12:20,873 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:21,048 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:21,073 - INFO - Success: Cart created successfully
+2026-06-09 00:12:21,080 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:21,286 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:21,305 - INFO - Success: Cart created successfully
+2026-06-09 00:12:21,312 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:21,548 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:21,570 - INFO - Success: Cart created successfully
+2026-06-09 00:12:21,579 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:21,899 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:21,924 - INFO - Success: Cart created successfully
+2026-06-09 00:12:21,931 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:22,120 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:22,318 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:22,332 - INFO - Success: Cart created successfully
+2026-06-09 00:12:22,340 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:22,516 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:12:22,539 - INFO - Success: Cart created successfully
+2026-06-09 00:12:22,547 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:22,722 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:12:22,727 - INFO - Request: get all products
+2026-06-09 00:12:22,729 - INFO - Success: Retrieved 0 products
+2026-06-09 00:27:06,686 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:06,710 - INFO - Success: Cart created successfully
+2026-06-09 00:27:06,833 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:06,848 - INFO - Success: Cart created successfully
+2026-06-09 00:27:06,980 - WARNING - Validation Error: Bad Request - user_id: Field required
+2026-06-09 00:27:07,097 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:07,212 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:07,229 - INFO - Success: Cart created successfully
+2026-06-09 00:27:07,235 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:07,252 - INFO - Success: Product created successfully
+2026-06-09 00:27:07,259 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-09 00:27:07,283 - INFO - Success: Item added successfully
+2026-06-09 00:27:07,398 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:07,414 - INFO - Success: Product created successfully
+2026-06-09 00:27:07,422 - INFO - Request: product_id=1, cart_id=9999, quantity=1
+2026-06-09 00:27:07,424 - WARNING - Error: Cart not found
+2026-06-09 00:27:07,675 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:07,696 - INFO - Success: Cart created successfully
+2026-06-09 00:27:07,703 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:07,718 - INFO - Success: Product created successfully
+2026-06-09 00:27:07,726 - WARNING - Validation Error: Bad Request - quantity: Field required
+2026-06-09 00:27:07,844 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:07,857 - INFO - Success: Cart created successfully
+2026-06-09 00:27:07,864 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:07,877 - INFO - Success: Product created successfully
+2026-06-09 00:27:07,885 - WARNING - Validation Error: Bad Request - quantity: Input should be greater than 0
+2026-06-09 00:27:07,988 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:08,000 - INFO - Success: Cart created successfully
+2026-06-09 00:27:08,007 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:08,019 - INFO - Success: Product created successfully
+2026-06-09 00:27:08,028 - WARNING - Validation Error: Bad Request - quantity: Input should be greater than 0
+2026-06-09 00:27:08,139 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:08,156 - INFO - Success: Cart created successfully
+2026-06-09 00:27:08,164 - INFO - Request: product_id=9999, cart_id=1, quantity=1
+2026-06-09 00:27:08,168 - WARNING - Error: Product not found
+2026-06-09 00:27:08,275 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:08,303 - INFO - Success: Cart created successfully
+2026-06-09 00:27:08,308 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:08,323 - INFO - Success: Product created successfully
+2026-06-09 00:27:08,330 - INFO - Request: product_id=1, cart_id=1, quantity=1
+2026-06-09 00:27:08,345 - INFO - Success: Item added successfully
+2026-06-09 00:27:09,109 - INFO - Request: remove item_id=99999
+2026-06-09 00:27:09,115 - WARNING - Error: Item not found
+2026-06-09 00:27:09,249 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:09,266 - INFO - Success: Cart created successfully
+2026-06-09 00:27:09,272 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:09,284 - INFO - Success: Product created successfully
+2026-06-09 00:27:09,292 - INFO - Request: product_id=1, cart_id=1, quantity=1
+2026-06-09 00:27:09,309 - INFO - Success: Item added successfully
+2026-06-09 00:27:09,449 - WARNING - Validation Error: Bad Request - item_id: Input should be a valid integer, unable to parse string as an integer
+2026-06-09 00:27:09,546 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:09,558 - INFO - Success: Cart created successfully
+2026-06-09 00:27:09,564 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:09,577 - INFO - Success: Product created successfully
+2026-06-09 00:27:09,586 - INFO - Request: product_id=1, cart_id=1, quantity=1
+2026-06-09 00:27:09,604 - INFO - Success: Item added successfully
+2026-06-09 00:27:09,612 - INFO - Request: checkout cart_id=1
+2026-06-09 00:27:09,628 - INFO - Success: Checkout successful
+2026-06-09 00:27:09,742 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:09,755 - INFO - Success: Cart created successfully
+2026-06-09 00:27:09,763 - INFO - Request: checkout cart_id=1
+2026-06-09 00:27:09,766 - WARNING - Error: Cart is empty
+2026-06-09 00:27:09,868 - INFO - Request: checkout cart_id=99999
+2026-06-09 00:27:09,870 - WARNING - Error: Cart not found
+2026-06-09 00:27:09,974 - WARNING - Validation Error: Bad Request - cart_id: Field required
+2026-06-09 00:27:10,084 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:10,097 - INFO - Success: Cart created successfully
+2026-06-09 00:27:10,104 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:10,116 - INFO - Success: Product created successfully
+2026-06-09 00:27:10,124 - INFO - Request: product_id=1, cart_id=1, quantity=1
+2026-06-09 00:27:10,140 - INFO - Success: Item added successfully
+2026-06-09 00:27:10,147 - INFO - Request: checkout cart_id=1
+2026-06-09 00:27:10,160 - INFO - Success: Checkout successful
+2026-06-09 00:27:10,166 - INFO - Request: checkout cart_id=1
+2026-06-09 00:27:10,170 - WARNING - Error: Cart is empty
+2026-06-09 00:27:10,418 - WARNING - Validation Error: Bad Request - cart_id: Input should be a valid integer, unable to parse string as an integer
+2026-06-09 00:27:10,551 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:10,566 - INFO - Success: Cart created successfully
+2026-06-09 00:27:10,574 - INFO - Request: delete cart_id=1
+2026-06-09 00:27:10,590 - INFO - Success: Cart deleted successfully
+2026-06-09 00:27:10,714 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:10,729 - INFO - Success: Cart created successfully
+2026-06-09 00:27:10,736 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:10,748 - INFO - Success: Product created successfully
+2026-06-09 00:27:10,755 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-09 00:27:10,772 - INFO - Success: Item added successfully
+2026-06-09 00:27:10,778 - INFO - Request: delete cart_id=1
+2026-06-09 00:27:10,790 - INFO - Success: Cart deleted successfully
+2026-06-09 00:27:10,928 - INFO - Request: delete cart_id=99999
+2026-06-09 00:27:10,934 - WARNING - Error: Cart not found
+2026-06-09 00:27:11,063 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:11,079 - INFO - Success: Cart created successfully
+2026-06-09 00:27:11,086 - INFO - Request: delete cart_id=1
+2026-06-09 00:27:11,100 - INFO - Success: Cart deleted successfully
+2026-06-09 00:27:11,106 - INFO - Request: delete cart_id=1
+2026-06-09 00:27:11,108 - WARNING - Error: Cart not found
+2026-06-09 00:27:11,230 - WARNING - Validation Error: Bad Request - cart_id: Input should be a valid integer, unable to parse string as an integer
+2026-06-09 00:27:11,331 - WARNING - Validation Error: Bad Request - discount: Field required
+2026-06-09 00:27:11,530 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:11,866 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:12,166 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:12,373 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:12,511 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:12,619 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:12,728 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:12,972 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:13,132 - INFO - Request: get all products
+2026-06-09 00:27:13,139 - INFO - Success: Retrieved 0 products
+2026-06-09 00:27:13,249 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:13,253 - INFO - Request: get all products
+2026-06-09 00:27:13,255 - INFO - Success: Retrieved 0 products
+2026-06-09 00:27:13,415 - INFO - Request: get all products
+2026-06-09 00:27:13,418 - INFO - Success: Retrieved 0 products
+2026-06-09 00:27:13,530 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:13,535 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:13,540 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:13,545 - INFO - Request: get all products
+2026-06-09 00:27:13,548 - INFO - Success: Retrieved 0 products
+2026-06-09 00:27:14,238 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:14,243 - INFO - Request: get all products
+2026-06-09 00:27:14,246 - INFO - Success: Retrieved 0 products
+2026-06-09 00:27:14,395 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:14,524 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:14,538 - INFO - Success: Cart created successfully
+2026-06-09 00:27:14,545 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:14,559 - INFO - Success: Product created successfully
+2026-06-09 00:27:14,566 - INFO - Request: delete cart_id=1
+2026-06-09 00:27:14,580 - INFO - Success: Cart deleted successfully
+2026-06-09 00:27:14,586 - INFO - Request: checkout cart_id=1
+2026-06-09 00:27:14,588 - WARNING - Error: Cart not found
+2026-06-09 00:27:14,706 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:14,723 - INFO - Success: Cart created successfully
+2026-06-09 00:27:14,730 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:14,742 - INFO - Success: Product created successfully
+2026-06-09 00:27:14,750 - INFO - Request: product_id=1, cart_id=1, quantity=1
+2026-06-09 00:27:14,767 - INFO - Success: Item added successfully
+2026-06-09 00:27:14,773 - INFO - Request: checkout cart_id=1
+2026-06-09 00:27:14,786 - INFO - Success: Checkout successful
+2026-06-09 00:27:14,792 - INFO - Request: product_id=1, cart_id=1, quantity=1
+2026-06-09 00:27:14,821 - INFO - Success: Item added successfully
+2026-06-09 00:27:14,957 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:14,970 - INFO - Success: Cart created successfully
+2026-06-09 00:27:14,977 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:14,989 - INFO - Success: Product created successfully
+2026-06-09 00:27:14,997 - WARNING - Validation Error: Bad Request - quantity: Input should be less than or equal to 1000
+2026-06-09 00:27:15,115 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:15,128 - INFO - Success: Cart created successfully
+2026-06-09 00:27:15,133 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:15,144 - INFO - Success: Product created successfully
+2026-06-09 00:27:15,151 - INFO - Request: product_id=1, cart_id=1, quantity=1
+2026-06-09 00:27:15,167 - INFO - Success: Item added successfully
+2026-06-09 00:27:15,289 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:15,303 - INFO - Success: Product created successfully
+2026-06-09 00:27:15,310 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:15,326 - INFO - Success: Cart created successfully
+2026-06-09 00:27:15,333 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:15,346 - INFO - Success: Cart created successfully
+2026-06-09 00:27:15,449 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:15,464 - INFO - Success: Cart created successfully
+2026-06-09 00:27:15,471 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:15,488 - INFO - Success: Product created successfully
+2026-06-09 00:27:15,497 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-09 00:27:15,517 - INFO - Success: Item added successfully
+2026-06-09 00:27:15,523 - INFO - Request: checkout cart_id=1
+2026-06-09 00:27:15,537 - INFO - Success: Checkout successful
+2026-06-09 00:27:15,748 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:27:15,767 - INFO - Success: Cart created successfully
+2026-06-09 00:27:15,774 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:27:15,789 - INFO - Success: Product created successfully
+2026-06-09 00:27:15,798 - WARNING - Validation Error: Bad Request - quantity: Input should be a valid integer, got a number with a fractional part
+2026-06-09 00:27:15,903 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:27:15,907 - INFO - Request: get all products
+2026-06-09 00:27:15,910 - INFO - Success: Retrieved 0 products
+2026-06-09 00:36:26,901 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:26,927 - INFO - Success: Cart created successfully
+2026-06-09 00:36:27,056 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:27,075 - INFO - Success: Cart created successfully
+2026-06-09 00:36:27,186 - WARNING - Validation Error: Bad Request - user_id: Field required
+2026-06-09 00:36:27,391 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:27,567 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:27,581 - INFO - Success: Cart created successfully
+2026-06-09 00:36:27,589 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:27,605 - INFO - Success: Product created successfully
+2026-06-09 00:36:27,614 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-09 00:36:27,642 - INFO - Success: Item added successfully
+2026-06-09 00:36:27,749 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:27,763 - INFO - Success: Product created successfully
+2026-06-09 00:36:27,769 - INFO - Request: product_id=1, cart_id=9999, quantity=1
+2026-06-09 00:36:27,771 - WARNING - Error: Cart not found
+2026-06-09 00:36:27,912 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:27,926 - INFO - Success: Cart created successfully
+2026-06-09 00:36:27,932 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:27,960 - INFO - Success: Product created successfully
+2026-06-09 00:36:27,967 - WARNING - Validation Error: Bad Request - quantity: Field required
+2026-06-09 00:36:28,083 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:28,098 - INFO - Success: Cart created successfully
+2026-06-09 00:36:28,103 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:28,117 - INFO - Success: Product created successfully
+2026-06-09 00:36:28,124 - WARNING - Validation Error: Bad Request - quantity: Input should be greater than 0
+2026-06-09 00:36:28,242 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:28,256 - INFO - Success: Cart created successfully
+2026-06-09 00:36:28,261 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:28,276 - INFO - Success: Product created successfully
+2026-06-09 00:36:28,282 - WARNING - Validation Error: Bad Request - quantity: Input should be greater than 0
+2026-06-09 00:36:28,419 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:28,444 - INFO - Success: Cart created successfully
+2026-06-09 00:36:28,453 - INFO - Request: product_id=9999, cart_id=1, quantity=1
+2026-06-09 00:36:28,457 - WARNING - Error: Product not found
+2026-06-09 00:36:28,707 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:28,726 - INFO - Success: Cart created successfully
+2026-06-09 00:36:28,734 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:28,754 - INFO - Success: Product created successfully
+2026-06-09 00:36:28,761 - INFO - Request: product_id=1, cart_id=1, quantity=1
+2026-06-09 00:36:28,777 - INFO - Success: Item added successfully
+2026-06-09 00:36:29,335 - INFO - Request: remove item_id=99999
+2026-06-09 00:36:29,342 - WARNING - Error: Item not found
+2026-06-09 00:36:29,445 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:29,460 - INFO - Success: Cart created successfully
+2026-06-09 00:36:29,466 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:29,478 - INFO - Success: Product created successfully
+2026-06-09 00:36:29,484 - INFO - Request: product_id=1, cart_id=1, quantity=1
+2026-06-09 00:36:29,499 - INFO - Success: Item added successfully
+2026-06-09 00:36:29,634 - WARNING - Validation Error: Bad Request - item_id: Input should be a valid integer, unable to parse string as an integer
+2026-06-09 00:36:29,753 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:29,766 - INFO - Success: Cart created successfully
+2026-06-09 00:36:29,773 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:29,787 - INFO - Success: Product created successfully
+2026-06-09 00:36:29,794 - INFO - Request: product_id=1, cart_id=1, quantity=1
+2026-06-09 00:36:29,812 - INFO - Success: Item added successfully
+2026-06-09 00:36:29,818 - INFO - Request: checkout cart_id=1
+2026-06-09 00:36:29,835 - INFO - Success: Checkout successful
+2026-06-09 00:36:30,105 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:30,119 - INFO - Success: Cart created successfully
+2026-06-09 00:36:30,127 - INFO - Request: checkout cart_id=1
+2026-06-09 00:36:30,133 - WARNING - Error: Cart is empty
+2026-06-09 00:36:30,350 - INFO - Request: checkout cart_id=99999
+2026-06-09 00:36:30,361 - WARNING - Error: Cart not found
+2026-06-09 00:36:30,511 - WARNING - Validation Error: Bad Request - cart_id: Field required
+2026-06-09 00:36:30,621 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:30,639 - INFO - Success: Cart created successfully
+2026-06-09 00:36:30,645 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:30,659 - INFO - Success: Product created successfully
+2026-06-09 00:36:30,666 - INFO - Request: product_id=1, cart_id=1, quantity=1
+2026-06-09 00:36:30,684 - INFO - Success: Item added successfully
+2026-06-09 00:36:30,690 - INFO - Request: checkout cart_id=1
+2026-06-09 00:36:30,706 - INFO - Success: Checkout successful
+2026-06-09 00:36:30,712 - INFO - Request: checkout cart_id=1
+2026-06-09 00:36:30,715 - WARNING - Error: Cart is empty
+2026-06-09 00:36:30,845 - WARNING - Validation Error: Bad Request - cart_id: Input should be a valid integer, unable to parse string as an integer
+2026-06-09 00:36:30,947 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:30,966 - INFO - Success: Cart created successfully
+2026-06-09 00:36:30,974 - INFO - Request: delete cart_id=1
+2026-06-09 00:36:30,990 - INFO - Success: Cart deleted successfully
+2026-06-09 00:36:31,091 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:31,104 - INFO - Success: Cart created successfully
+2026-06-09 00:36:31,109 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:31,123 - INFO - Success: Product created successfully
+2026-06-09 00:36:31,131 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-09 00:36:31,149 - INFO - Success: Item added successfully
+2026-06-09 00:36:31,155 - INFO - Request: delete cart_id=1
+2026-06-09 00:36:31,169 - INFO - Success: Cart deleted successfully
+2026-06-09 00:36:31,291 - INFO - Request: delete cart_id=99999
+2026-06-09 00:36:31,297 - WARNING - Error: Cart not found
+2026-06-09 00:36:31,504 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:31,524 - INFO - Success: Cart created successfully
+2026-06-09 00:36:31,533 - INFO - Request: delete cart_id=1
+2026-06-09 00:36:31,555 - INFO - Success: Cart deleted successfully
+2026-06-09 00:36:31,563 - INFO - Request: delete cart_id=1
+2026-06-09 00:36:31,566 - WARNING - Error: Cart not found
+2026-06-09 00:36:31,702 - WARNING - Validation Error: Bad Request - cart_id: Input should be a valid integer, unable to parse string as an integer
+2026-06-09 00:36:31,812 - WARNING - Validation Error: Bad Request - discount: Field required
+2026-06-09 00:36:31,962 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:32,074 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:32,204 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:32,344 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:32,460 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:32,569 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:32,783 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:32,983 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:33,104 - INFO - Request: get all products
+2026-06-09 00:36:33,107 - INFO - Success: Retrieved 0 products
+2026-06-09 00:36:33,222 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:33,227 - INFO - Request: get all products
+2026-06-09 00:36:33,229 - INFO - Success: Retrieved 0 products
+2026-06-09 00:36:33,362 - INFO - Request: get all products
+2026-06-09 00:36:33,367 - INFO - Success: Retrieved 0 products
+2026-06-09 00:36:33,508 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:33,514 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:33,520 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:33,525 - INFO - Request: get all products
+2026-06-09 00:36:33,527 - INFO - Success: Retrieved 0 products
+2026-06-09 00:36:33,776 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:33,782 - INFO - Request: get all products
+2026-06-09 00:36:33,785 - INFO - Success: Retrieved 0 products
+2026-06-09 00:36:33,887 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:34,039 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:34,061 - INFO - Success: Cart created successfully
+2026-06-09 00:36:34,069 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:34,081 - INFO - Success: Product created successfully
+2026-06-09 00:36:34,088 - INFO - Request: delete cart_id=1
+2026-06-09 00:36:34,101 - INFO - Success: Cart deleted successfully
+2026-06-09 00:36:34,107 - INFO - Request: checkout cart_id=1
+2026-06-09 00:36:34,109 - WARNING - Error: Cart not found
+2026-06-09 00:36:34,309 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:34,333 - INFO - Success: Cart created successfully
+2026-06-09 00:36:34,340 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:34,351 - INFO - Success: Product created successfully
+2026-06-09 00:36:34,360 - INFO - Request: product_id=1, cart_id=1, quantity=1
+2026-06-09 00:36:34,379 - INFO - Success: Item added successfully
+2026-06-09 00:36:34,385 - INFO - Request: checkout cart_id=1
+2026-06-09 00:36:34,397 - INFO - Success: Checkout successful
+2026-06-09 00:36:34,404 - INFO - Request: product_id=1, cart_id=1, quantity=1
+2026-06-09 00:36:34,422 - INFO - Success: Item added successfully
+2026-06-09 00:36:34,739 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:34,775 - INFO - Success: Cart created successfully
+2026-06-09 00:36:34,788 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:34,812 - INFO - Success: Product created successfully
+2026-06-09 00:36:34,821 - WARNING - Validation Error: Bad Request - quantity: Input should be less than or equal to 1000
+2026-06-09 00:36:34,963 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:34,976 - INFO - Success: Cart created successfully
+2026-06-09 00:36:34,986 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:35,000 - INFO - Success: Product created successfully
+2026-06-09 00:36:35,008 - INFO - Request: product_id=1, cart_id=1, quantity=1
+2026-06-09 00:36:35,027 - INFO - Success: Item added successfully
+2026-06-09 00:36:35,149 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:35,160 - INFO - Success: Product created successfully
+2026-06-09 00:36:35,166 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:35,178 - INFO - Success: Cart created successfully
+2026-06-09 00:36:35,182 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:35,194 - INFO - Success: Cart created successfully
+2026-06-09 00:36:35,303 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:35,316 - INFO - Success: Cart created successfully
+2026-06-09 00:36:35,322 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:35,336 - INFO - Success: Product created successfully
+2026-06-09 00:36:35,344 - INFO - Request: product_id=1, cart_id=1, quantity=2
+2026-06-09 00:36:35,376 - INFO - Success: Item added successfully
+2026-06-09 00:36:35,386 - INFO - Request: checkout cart_id=1
+2026-06-09 00:36:35,407 - INFO - Success: Checkout successful
+2026-06-09 00:36:35,729 - INFO - Request: Create cart for user_id=1
+2026-06-09 00:36:35,746 - INFO - Success: Cart created successfully
+2026-06-09 00:36:35,754 - INFO - Request: create product price=100, discount=10
+2026-06-09 00:36:35,769 - INFO - Success: Product created successfully
+2026-06-09 00:36:35,778 - WARNING - Validation Error: Bad Request - quantity: Input should be a valid integer, got a number with a fractional part
+2026-06-09 00:36:35,921 - WARNING - Validation Error: Bad Request - body: Field required
+2026-06-09 00:36:35,926 - INFO - Request: get all products
+2026-06-09 00:36:35,929 - INFO - Success: Retrieved 0 products
