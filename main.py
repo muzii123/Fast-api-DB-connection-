@@ -8,6 +8,13 @@ from database import SessionLocal, engine
 import json
 from dotenv import load_dotenv
 from pydantic import BaseModel
+import watchtower
+import boto3
+
+
+
+
+
 
 
 
@@ -132,3 +139,28 @@ def get_products(db: Session = Depends(get_db)):
     products = db.query(models.Product).all()
     logger.info(f"Success: Retrieved {len(products)} products")
     return products
+
+
+    app = FastAPI()
+
+# 1. Setup CloudWatch Logger
+session = boto3.Session(
+    aws_access_key_id="YOUR_AWS_ACCESS_KEY",
+    aws_secret_access_key="YOUR_AWS_SECRET_KEY",
+    region_name="us-east-1" # Change to your region
+)
+cloudwatch_handler = watchtower.CloudWatchLogHandler(
+    boto3_session=session,
+    log_group="FastAPI-Logs",
+    stream_name="dev-stream"
+)
+
+# 2. Configure standard logging
+logger = logging.getLogger("my_fastapi")
+logger.setLevel(logging.INFO)
+logger.addHandler(cloudwatch_handler)
+
+@app.get("/")
+def read_root():
+    logger.info("Root endpoint was hit!")
+    return {"Hello": "World"}
