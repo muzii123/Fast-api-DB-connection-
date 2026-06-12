@@ -25,6 +25,7 @@ services:
       - "8001:8000"
     environment:
       DATABASE_URL: postgresql://postgres:password123@db:5432/cartdb
+      SECRET_KEY: a7f3c9e2b84d1f6a0e5b2c8d4f7a1e9b3c6d0f2a5e8b1c4d7f0a3e6b9c2d5f8
     depends_on:
       db:
         condition: service_healthy
@@ -36,6 +37,7 @@ services:
       - "8002:8000"
     environment:
       DATABASE_URL: postgresql://postgres:password123@db:5432/cartdb
+      SECRET_KEY: a7f3c9e2b84d1f6a0e5b2c8d4f7a1e9b3c6d0f2a5e8b1c4d7f0a3e6b9c2d5f8
     depends_on:
       db:
         condition: service_healthy

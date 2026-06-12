@@ -1,15 +1,13 @@
 """
 auth.py
-
 JWT Authentication helpers for the Cart API.
 
-How JWT works in this project:
-  1. User registers   → POST /auth/register  → password is hashed & stored in DB
-  2. User logs in     → POST /auth/login     → server returns a JWT access token
+How JWT works:
+  1. User registers   → POST /auth/register  → password hashed & stored in DB
+  2. User logs in     → POST /auth/login     → server returns a JWT token
   3. User calls API   → sends token in header: Authorization: Bearer <token>
-  4. Server verifies  → if valid → request goes through, if not → 401 Unauthorized
-
-
+  4. Server verifies  → if valid → request proceeds, if not → 401 Unauthorized
+"""
 
 import os
 from datetime import datetime, timedelta, timezone
@@ -24,41 +22,30 @@ from sqlalchemy.orm import Session
 from database import SessionLocal
 from models import User
 
-
+# ── Configuration ──────────────────────────────────────────────────────────────
 SECRET_KEY = os.getenv("SECRET_KEY", "change-this-to-a-very-long-random-secret-key")
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 60 
+ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
+# ── Password Hashing (bcrypt) ─────────────────────────────────────────────────
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-
+# ── OAuth2 scheme — tells FastAPI to look for Bearer token in headers ─────────
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/token")
 
 
-
-
 def hash_password(plain_password: str) -> str:
-    """Convert plain text password to bcrypt hash for safe storage in DB."""
+    """Hash a plain text password using bcrypt."""
     return pwd_context.hash(plain_password)
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """Check if a plain text password matches the stored bcrypt hash."""
+    """Verify plain text password against stored bcrypt hash."""
     return pwd_context.verify(plain_password, hashed_password)
 
 
-
-
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
-    """
-    Create a signed JWT token.
-
-    The token contains:
-     sub: the user's email (subject)
-     exp: expiration timestamp
-    
-    It is signed with SECRET_KEY so the server can verify it wasn't tampered with.
-    """
+    """Create a signed JWT token with email + expiry."""
     to_encode = data.copy()
     expire = datetime.now(timezone.utc) + (
         expires_delta or timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -68,10 +55,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -
 
 
 def decode_token(token: str) -> dict:
-    """
-    Decode and verify a JWT token.
-    Raises HTTPException 401 if token is invalid or expired.
-    """
+    """Decode and verify JWT. Raises 401 if invalid or expired."""
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Invalid or expired token. Please login again.",
@@ -87,10 +71,8 @@ def decode_token(token: str) -> dict:
         raise credentials_exception
 
 
-
-
 def get_db():
-    """Database session dependency (duplicated here to avoid circular imports)."""
+    """DB session (kept here to avoid circular imports)."""
     db = SessionLocal()
     try:
         yield db
@@ -103,18 +85,9 @@ def get_current_user(
     db: Session = Depends(get_db),
 ) -> User:
     """
-    FastAPI dependency — use this to protect any endpoint.
-
-    Usage:
-        @app.get("/protected")
-        def my_endpoint(current_user: User = Depends(get_current_user)):
-            ...
-
-    What it does:
-      1. Extracts token from Authorization: Bearer <token> header
-      2. Decodes and verifies the JWT
-      3. Looks up the user in the database
-      4. Returns the User object — or raises 401 if anything is wrong
+    FastAPI dependency — protects any endpoint.
+    Extracts Bearer token → decodes it → returns User from DB.
+    Raises 401 if token is missing, expired, or invalid.
     """
     token_data = decode_token(token)
     user = db.query(User).filter(User.email == token_data["email"]).first()
