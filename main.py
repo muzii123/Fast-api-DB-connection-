@@ -1,58 +1,55 @@
 import logging
-from fastapi import FastAPI, Depends, Request
+from fastapi import FastAPI, Depends, Request, Query
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
+
 import models, schemas, crud
 from database import SessionLocal, engine
-import json
+from auth import create_access_token, get_current_user
+from models import User
 from dotenv import load_dotenv
-from pydantic import BaseModel
-import watchtower
-import boto3
-
-
-
-
-
-
-
-
-
-class ProductCreate(BaseModel):
-    price: float
-    discount: float = 0.0  
 
 load_dotenv()
 
-# ✅ Create and configure logger
+# ── Logger Setup ──────────────────────────────────────────────────────────────
 logger = logging.getLogger("cart_api")
 logger.setLevel(logging.INFO)
 
-# ❗ Remove duplicate handlers
 if logger.hasHandlers():
     logger.handlers.clear()
 
-# ✅ Console handler
 console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.INFO)
-
-# ✅ File handler
 file_handler = logging.FileHandler("app.log")
 file_handler.setLevel(logging.INFO)
-
-# ✅ Format
 formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
 console_handler.setFormatter(formatter)
 file_handler.setFormatter(formatter)
-
-# ✅ Attach handlers
 logger.addHandler(console_handler)
 logger.addHandler(file_handler)
 
-#models.Base.metadata.create_all(bind=engine)
+# ── App ───────────────────────────────────────────────────────────────────────
+app = FastAPI(
+    title="Cart API",
+    description="""
+## Cart API with JWT Authentication
 
-app = FastAPI()
+### How to use:
+1. **Register** → `POST /auth/register` — create your account
+2. **Login** → `POST /auth/login` — get your JWT token
+3. **Authorize** → click the 🔒 **Authorize** button at the top right of this page
+4. Enter: `Bearer <your_token>` — then click Authorize
+5. Now all protected endpoints will work with your token
+
+All cart, product, and user endpoints require a valid JWT token.
+""",
+    version="2.0.0",
+    # This adds the 🔒 Authorize button in Swagger UI
+    swagger_ui_parameters={"persistAuthorization": True},
+)
+
 
 def get_db():
     db = SessionLocal()
@@ -61,106 +58,203 @@ def get_db():
     finally:
         db.close()
 
-# ✅ Custom validation error handler - logs to both terminal and app.log
+
+# ── Error Handlers ────────────────────────────────────────────────────────────
+
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
     error_messages = []
     for error in exc.errors():
-        field = error['loc'][-1]
-        message = error['msg']
+        field = error["loc"][-1]
+        message = error["msg"]
         error_messages.append(f"{field}: {message}")
-    
-    # 🔥 LOG THE ERROR to both terminal and app.log
-    error_msg = "Bad Request - " + ", ".join(error_messages)
-    logger.warning(f"Validation Error: {error_msg}")
-    
+    logger.warning(f"Validation Error: {', '.join(error_messages)}")
     return JSONResponse(
         status_code=400,
-        content={"message": "Bad Request", "detail": error_messages}
+        content={"message": "Bad Request", "detail": error_messages},
     )
 
-# ✅ Global exception handler
+
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
     logger.error(f"Internal Server Error: {str(exc)}")
     return JSONResponse(
         status_code=500,
-        content={"message": "Internal Server Error", "detail": str(exc)}
+        content={"message": "Internal Server Error", "detail": str(exc)},
     )
 
-@app.post("/cart")
-def create_cart(data: schemas.CartCreate, db: Session = Depends(get_db)):
-    logger.info(f"Request: Create cart for user_id={data.user_id}")
-    response = crud.create_cart(db, data.user_id)
-    logger.info("Success: Cart created successfully")
-    return response
 
-@app.post("/cart/add")
-def add_item(data: schemas.AddItem, db: Session = Depends(get_db)):
-    logger.info(f"Request: product_id={data.product_id}, cart_id={data.cart_id}, quantity={data.quantity}")
-    response = crud.add_item(db, data)
-    logger.info(f"Success: {response.get('message', 'Item added successfully')}")
-    return response
+# ── Public Endpoints (no token needed) ───────────────────────────────────────
 
-@app.delete("/cart/remove/{item_id}")
-def remove_item(item_id: int, db: Session = Depends(get_db)):
-    logger.info(f"Request: remove item_id={item_id}")
-    response = crud.remove_item(db, item_id)
-    logger.info(f"Success: {response.get('message', 'Item removed successfully')}")
-    return response
+@app.get("/", tags=["Health"])
+def read_root():
+    """Public health check — no token required."""
+    return {"message": "Cart API is running", "docs": "/docs"}
 
-@app.post("/cart/checkout")
-def checkout(cart_id: int, db: Session = Depends(get_db)):
-    logger.info(f"Request: checkout cart_id={cart_id}")
-    response = crud.checkout(db, cart_id)
-    logger.info(f"Success: {response.get('message', 'Checkout successful')}")
-    return response
 
-@app.delete("/cart/{cart_id}")
-def delete_cart(cart_id: int, db: Session = Depends(get_db)):
-    logger.info(f"Request: delete cart_id={cart_id}")
-    response = crud.delete_cart(db, cart_id)
-    logger.info(f"Success: {response.get('message', 'Cart deleted successfully')}")
-    return response
+# ── Auth Endpoints (PUBLIC — these give you the token) ────────────────────────
 
-@app.post("/product")
-def create_product(product: schemas.ProductCreate, db: Session = Depends(get_db)):
-    logger.info(f"Request: create product price={product.price}, discount={product.discount}")
+@app.post("/auth/register", summary="Register", tags=["Auth"], status_code=201)
+def register(data: schemas.RegisterRequest, db: Session = Depends(get_db)):
+    """
+    **Register a new user account.**
+
+    - Provide email, password, contact number, and address
+    - Password is stored as a secure bcrypt hash — never plain text
+    - Email must be unique
+    """
+    logger.info(f"Register → email={data.email}")
+    user = crud.register_user(db, data)
+    logger.info(f"Registered → id={user.id}")
+    return {
+        "message": "Registration successful. Please login to get your token.",
+        "user_id": user.id,
+        "email": user.email,
+    }
+
+
+@app.post("/auth/login", summary="Login", tags=["Auth"], response_model=schemas.TokenResponse)
+def login(data: schemas.LoginRequest, db: Session = Depends(get_db)):
+    """
+    **Login with JSON body — use this in Postman.**
+
+    - Send `{"email": "...", "password": "..."}`
+    - Returns JWT access token valid for 60 minutes
+    """
+    logger.info(f"Login attempt → email={data.email}")
+    user = crud.authenticate_user(db, data.email, data.password)
+    token = create_access_token(data={"sub": user.email})
+    logger.info(f"Login success → user_id={user.id}")
+    return schemas.TokenResponse(access_token=token)
+
+
+@app.post("/auth/token", summary="Login for Swagger UI", tags=["Auth"], response_model=schemas.TokenResponse)
+def login_swagger(
+    form_data: OAuth2PasswordRequestForm = Depends(),
+    db: Session = Depends(get_db),
+):
+    """
+    **Login via form — used automatically by the 🔒 Authorize button in Swagger UI.**
+
+    - In the Authorize dialog: type your email in the `username` field
+    - Type your password in the `password` field
+    - Click Authorize — all endpoints will work automatically
+    """
+    logger.info(f"Swagger login → username={form_data.username}")
+    user = crud.authenticate_user(db, form_data.username, form_data.password)
+    token = create_access_token(data={"sub": user.email})
+    logger.info(f"Swagger login success → user_id={user.id}")
+    return schemas.TokenResponse(access_token=token)
+
+# ── Protected Endpoints (JWT token required for all below) ────────────────────
+# Every endpoint below has:  current_user: User = Depends(get_current_user)
+# This means FastAPI checks the token BEFORE running the endpoint function.
+
+
+# ── User Endpoints ────────────────────────────────────────────────────────────
+
+@app.get("/users", summary="Get All Users", tags=["Users"])
+def get_users(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """🔒 Protected — returns all users. Requires valid JWT token."""
+    logger.info(f"Get users → requested by {current_user.email}")
+    users = db.query(models.User).all()
+    return users
+
+
+# ── Product Endpoints ─────────────────────────────────────────────────────────
+
+@app.post("/product", summary="Create Product", tags=["Products"], status_code=201)
+def create_product(
+    product: schemas.ProductCreate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """🔒 Protected — create a new product. Requires valid JWT token."""
+    logger.info(f"Create product → price={product.price} by {current_user.email}")
     db_product = models.Product(price=product.price, discount=product.discount)
     db.add(db_product)
     db.commit()
     db.refresh(db_product)
-    logger.info("Success: Product created successfully")
     return db_product
 
-@app.get("/products")
-def get_products(db: Session = Depends(get_db)):
-    logger.info("Request: get all products")
+
+@app.get("/products", summary="Get Products", tags=["Products"])
+def get_products(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """🔒 Protected — get all products. Requires valid JWT token."""
     products = db.query(models.Product).all()
-    logger.info(f"Success: Retrieved {len(products)} products")
     return products
 
 
-    app = FastAPI()
+# ── Cart Endpoints ────────────────────────────────────────────────────────────
 
-# 1. Setup CloudWatch Logger
-session = boto3.Session(
-    aws_access_key_id="YOUR_AWS_ACCESS_KEY",
-    aws_secret_access_key="YOUR_AWS_SECRET_KEY",
-    region_name="us-east-1" # Change to your region
-)
-cloudwatch_handler = watchtower.CloudWatchLogHandler(
-    boto3_session=session,
-    log_group="FastAPI-Logs",
-    stream_name="dev-stream"
-)
+@app.post("/cart", summary="Create Cart", tags=["Cart"])
+def create_cart(
+    data: schemas.CartCreate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """🔒 Protected — create a cart for a user. Requires valid JWT token."""
+    logger.info(f"Create cart → user_id={data.user_id} by {current_user.email}")
+    response = crud.create_cart(db, data.user_id)
+    return response
 
-# 2. Configure standard logging
-logger = logging.getLogger("my_fastapi")
-logger.setLevel(logging.INFO)
-logger.addHandler(cloudwatch_handler)
 
-@app.get("/")
-def read_root():
-    logger.info("Root endpoint was hit!")
-    return {"Hello": "World"}
+@app.post("/cart/add", summary="Add Item", tags=["Cart"])
+def add_item(
+    data: schemas.AddItem,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """🔒 Protected — add a product to a cart. Requires valid JWT token."""
+    logger.info(f"Add item → cart={data.cart_id} product={data.product_id} by {current_user.email}")
+    return crud.add_item(db, data)
+
+
+@app.delete("/cart/remove/{item_id}", summary="Remove Item", tags=["Cart"])
+def remove_item(
+    item_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """🔒 Protected — remove an item from a cart. Requires valid JWT token."""
+    logger.info(f"Remove item → item_id={item_id} by {current_user.email}")
+    return crud.remove_item(db, item_id)
+
+
+@app.post("/cart/checkout", summary="Checkout", tags=["Cart"])
+def checkout(
+    cart_id: int = Query(..., gt=0, description="Cart ID to checkout"),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """🔒 Protected — checkout a cart. Requires valid JWT token."""
+    logger.info(f"Checkout → cart_id={cart_id} by {current_user.email}")
+    return crud.checkout(db, cart_id)
+
+
+@app.delete("/cart/{cart_id}", summary="Delete Cart", tags=["Cart"])
+def delete_cart(
+    cart_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """🔒 Protected — delete a cart. Requires valid JWT token."""
+    logger.info(f"Delete cart → cart_id={cart_id} by {current_user.email}")
+    return crud.delete_cart(db, cart_id)
+
+
+@app.get("/cart/{cart_id}", summary="Get Cart", tags=["Cart"])
+def get_cart(
+    cart_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """🔒 Protected — get cart details. Requires valid JWT token."""
+    logger.info(f"Get cart → cart_id={cart_id} by {current_user.email}")
+    return crud.get_cart(db, cart_id)

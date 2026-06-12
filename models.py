@@ -4,9 +4,10 @@ from database import Base
 class User(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True)
-    email = Column(String)
+    email = Column(String, unique=True, index=True)
     contact_no = Column(String)
     address = Column(String)
+    password_hash = Column(String, nullable=True)  # hashed password for JWT auth
 
 class Cart(Base):
     __tablename__ = "carts"

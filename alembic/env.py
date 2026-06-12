@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # IMPORT THE WORKING URL DIRECTLY FROM database.py
 from database import Base, DATABASE_URL
-from models import Product, Cart, CartItem
+from models import Product, Cart, CartItem, User
 
 config = context.config
 if config.config_file_name is not None:
